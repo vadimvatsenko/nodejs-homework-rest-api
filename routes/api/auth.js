@@ -15,6 +15,8 @@ const {
     resendVerifyEmail
 } = authCntr;
 
+console.log(verifyEmail)
+
 const router = express.Router();
 
 router.post(
