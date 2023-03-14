@@ -4,7 +4,8 @@ const getCurrent = require("./current");
 const logout = require("./logout");
 const subscription = require("./subscription");
 const updateAvatar = require("./updateAvatar");
-const verifyEmail = require("./updateAvatar")
+const verifyEmail = require("./updateAvatar");
+const resendVerifyEmail = require('./resendVerifyEmail')
 const { controllersWrapper } = require("../../helpers/");
 
 
@@ -16,5 +17,5 @@ module.exports = {
     subscription: controllersWrapper(subscription),
     updateAvatar: controllersWrapper(updateAvatar),
     verifyEmail: controllersWrapper(verifyEmail),
-
+    resendVerifyEmail: controllersWrapper(resendVerifyEmail)
 }

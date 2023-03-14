@@ -41,11 +41,12 @@ const addJoiSchema = Joi.object({
   phone: Joi.string().min(4).max(50).required().pattern(phonePattern),
   favorite: Joi.boolean(),
 
-})
+});
 
 const updateFovoriteJoiSchema = Joi.object({
-   favorite: Joi.boolean().required()
-})
+  favorite: Joi.boolean().required()
+});
+
 
 const schemas = {
   addJoiSchema,

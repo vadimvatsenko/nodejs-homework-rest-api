@@ -6,8 +6,6 @@ const { HttpError} = require('../../helpers');
 require("dotenv").config();
 const {SECRET_KEY} = process.env
 
-
-
 const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -18,6 +16,9 @@ const login = async (req, res) => {
     const passwordConpare = await bcrypt.compare(password, user.password);
     if (!passwordConpare) {
         throw HttpError(401, "Email or password invalid")
+    }
+    if (!user.verify) {
+        throw HttpError(403, "Email not verificated")
     }
 
     const payload = {

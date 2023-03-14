@@ -11,27 +11,61 @@ const {
     logout,
     subscription,
     updateAvatar,
-    verifyEmail
+    verifyEmail,
+    resendVerifyEmail
 } = authCntr;
-
-console.log(updateAvatar)
 
 const router = express.Router();
 
-router.post("/register", validateBody(schemas.registerSchema), register);
+router.post(
+    "/register",
+    validateBody(schemas.registerSchema),
+    register
+);
 
-router.post("/login", validateBody(schemas.loginSchema), login);
+router.post(
+    "/login",
+    validateBody(schemas.loginSchema),
+    login
+);
 
-router.get("/current", authenticate, getCurrent);
+router.get(
+    "/current",
+    authenticate,
+    getCurrent
+);
 
-router.post("/logout", authenticate, logout);
+router.post(
+    "/logout",
+    authenticate,
+    logout
+);
 
-router.patch("/:id/subscription", authenticate, isValidId, validateBody(schemas.updateSubscriptionJoiSchema), subscription)
+router.patch(
+    "/:id/subscription",
+    authenticate,
+    isValidId,
+    validateBody(schemas.updateSubscriptionJoiSchema),
+    subscription
+)
 
-router.patch("/avatars", authenticate, upload.single("avatar"), updateAvatar);
+router.patch(
+    "/avatars",
+    authenticate,
+    upload.single("avatar"),
+    updateAvatar
+);
 
-router.get("/verify/:verificationToken", verifyEmail )
+router.get(
+    "/verify/:verificationToken",
+    verifyEmail
+);
+
+router.post(
+    "/verify",
+    validateBody(schemas.verifyEmailSchema),
+    resendVerifyEmail
+)
 
 module.exports = router;
 
-// SG.QWzzlCjHT26WCUZlBCzfEQ.IIf0SSBaFMiLQaU7CaSHXPb4U2TsGC4HJa-l3EIqwEY
