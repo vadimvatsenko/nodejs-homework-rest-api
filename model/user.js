@@ -34,6 +34,14 @@ const userSchema = new Schema({
     avatarUrl: {
         type: String,
         require: true
+    },
+    verify: {
+        type: Boolean,
+        default: false,
+    },
+    verificationToken: {
+        type: String,
+        require: true,
     }
 
 

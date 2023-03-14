@@ -3,7 +3,8 @@ const register = require("./register");
 const getCurrent = require("./current");
 const logout = require("./logout");
 const subscription = require("./subscription");
-const updateAvatar = require("./updateAvatar")
+const updateAvatar = require("./updateAvatar");
+const verifyEmail = require("./updateAvatar")
 const { controllersWrapper } = require("../../helpers/");
 
 
@@ -13,6 +14,7 @@ module.exports = {
     getCurrent: controllersWrapper(getCurrent),
     logout: controllersWrapper(logout),
     subscription: controllersWrapper(subscription),
-    updateAvatar:controllersWrapper(updateAvatar)
+    updateAvatar: controllersWrapper(updateAvatar),
+    verifyEmail: controllersWrapper(verifyEmail),
 
 }

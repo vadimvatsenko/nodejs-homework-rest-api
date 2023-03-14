@@ -4,7 +4,15 @@ const {authCntr} = require("../../controllers/")
 const { schemas } = require("../../model/user");
 
 
-const { login, register, getCurrent, logout, subscription, updateAvatar } = authCntr;
+const {
+    login,
+    register,
+    getCurrent,
+    logout,
+    subscription,
+    updateAvatar,
+    verifyEmail
+} = authCntr;
 
 console.log(updateAvatar)
 
@@ -20,6 +28,10 @@ router.post("/logout", authenticate, logout);
 
 router.patch("/:id/subscription", authenticate, isValidId, validateBody(schemas.updateSubscriptionJoiSchema), subscription)
 
-router.patch("/avatars", authenticate, upload.single("avatar"), updateAvatar)
+router.patch("/avatars", authenticate, upload.single("avatar"), updateAvatar);
+
+router.get("/verify/:verificationToken", verifyEmail )
 
 module.exports = router;
+
+// SG.QWzzlCjHT26WCUZlBCzfEQ.IIf0SSBaFMiLQaU7CaSHXPb4U2TsGC4HJa-l3EIqwEY
