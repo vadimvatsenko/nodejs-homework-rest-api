@@ -3,21 +3,23 @@ const { validateBody, authenticate, isValidId, upload} = require("../../middlewa
 const {authCntr} = require("../../controllers/")
 const { schemas } = require("../../model/user");
 
-
 const {
+    // verifyEmail,
     login,
     register,
     getCurrent,
     logout,
     subscription,
     updateAvatar,
-    verifyEmail,
     resendVerifyEmail
 } = authCntr;
 
-console.log(verifyEmail)
-
 const router = express.Router();
+
+// ---
+const verifyEmail = require("../../controllers/auth/verifyEmail");
+const { controllersWrapper } = require("../../helpers");
+// ---
 
 router.post(
     "/register",
@@ -60,7 +62,9 @@ router.patch(
 
 router.get(
     "/verify/:verificationToken",
-    verifyEmail
+    // verifyEmail,
+    controllersWrapper(verifyEmail)
+
 );
 
 router.post(
